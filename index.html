@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coop</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        overflow: hidden;
+        background: #9fc9e8;
+        font-family: system-ui, sans-serif;
+      }
+      canvas {
+        display: block;
+      }
+      .hud {
+        position: fixed;
+        color: #fff;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+        pointer-events: none;
+        user-select: none;
+      }
+      #help {
+        top: 12px;
+        left: 12px;
+        font-size: 13px;
+        line-height: 1.5;
+        background: rgba(0, 0, 0, 0.25);
+        padding: 8px 12px;
+        border-radius: 8px;
+      }
+      #active {
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 18px;
+        background: rgba(0, 0, 0, 0.3);
+        padding: 6px 16px;
+        border-radius: 999px;
+      }
+      #place {
+        top: 14px;
+        left: 50%;
+        transform: translate(-50%, -8px);
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.35;
+        background: rgba(122, 90, 166, 0.55);
+        padding: 8px 20px;
+        border-radius: 16px;
+        opacity: 0;
+        transition: opacity 0.4s, transform 0.4s;
+      }
+      #place.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      #place small {
+        font-size: 13px;
+        opacity: 0.9;
+      }
+      #prompt {
+        bottom: 58px;
+        left: 50%;
+        transform: translate(-50%, 6px);
+        font-size: 15px;
+        background: rgba(122, 90, 166, 0.6);
+        padding: 6px 16px;
+        border-radius: 999px;
+        opacity: 0;
+        transition: opacity 0.25s, transform 0.25s;
+      }
+      #prompt.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+      #loading {
+        inset: 0;
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="help" class="hud">
+      <b>WASD / panah</b> jalan · <b>Shift</b> lari · <b>Spasi</b> lompat<br />
+      <b>E</b> naik / turun kendaraan (mobil, motor, sepeda, jetpack)<br />
+      <b>Tab / 1 / 2</b> ganti karakter · <b>V</b> kamera isometrik / orang ketiga · <b>Z / X</b> putar peta<br />
+      <b>Drag / klik</b> + mouse untuk kamera · <b>Scroll</b> zoom
+    </div>
+    <div id="place" class="hud"></div>
+    <div id="prompt" class="hud"></div>
+    <div id="active" class="hud">Karakter: <b id="active-name"></b></div>
+    <div id="loading" class="hud">Memuat aset…</div>
+    <script type="module" src="/scr/main.js"></script>
+  </body>
+</html>
